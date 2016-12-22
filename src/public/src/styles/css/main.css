@@ -274,4 +274,107 @@ body, html {
       border-left: 25px solid transparent;
       border-bottom: 25px solid #f1efeb; }
 
+.featured {
+  background-color: #f1efeb;
+  height: 500px; }
+  .featured .head {
+    text-align: center;
+    position: relative; }
+    .featured .head span {
+      display: inline-block;
+      padding: 0 10px;
+      background-color: #f1efeb;
+      z-index: 2;
+      position: relative; }
+    .featured .head:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+      left: 25px;
+      right: 25px;
+      top: 50%;
+      height: 1px;
+      background: #ccc; }
+  .featured .recent {
+    height: 100%;
+    text-align: center; }
+  .featured .earlier {
+    height: 100%;
+    text-align: center; }
+  .featured .article {
+    margin-top: 15px;
+    width: 100%;
+    height: 450px; }
+    .featured .article .article-overlay {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; }
+      .featured .article .article-overlay .tag {
+        margin-top: 10px;
+        width: 50px;
+        height: 50px; }
+      .featured .article .article-overlay:hover {
+        cursor: pointer; }
+        .featured .article .article-overlay:hover .article-hover {
+          display: block; }
+      .featured .article .article-overlay .article-hover {
+        overflow: hidden;
+        display: none; }
+        .featured .article .article-overlay .article-hover .article-desc {
+          font-size: 18px;
+          line-height: 2.0;
+          margin-top: 50px;
+          padding: 15px;
+          padding-top: none;
+          color: #2B2D42; }
+
+.main {
+  text-align: center;
+  background-color: #f1efeb; }
+  .main .head {
+    text-align: center;
+    position: relative; }
+    .main .head span {
+      display: inline-block;
+      padding: 0px 10px;
+      background-color: #f1efeb;
+      z-index: 2;
+      position: relative;
+      margin-top: -15px; }
+    .main .head:before {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 1;
+      left: 25px;
+      right: 25px;
+      top: 50%;
+      height: 1px;
+      background: #ccc; }
+  .main .article {
+    min-height: auto;
+    margin-top: 15px;
+    width: 100%; }
+    .main .article .article-overlay {
+      width: 100%;
+      height: 100%; }
+      .main .article .article-overlay .tag {
+        margin-top: 10px;
+        width: 50px;
+        height: 50px; }
+      .main .article .article-overlay:hover {
+        cursor: pointer; }
+        .main .article .article-overlay:hover .article-hover {
+          display: block; }
+      .main .article .article-overlay .article-hover {
+        display: none; }
+        .main .article .article-overlay .article-hover .article-desc {
+          font-size: 18px;
+          line-height: 2.0;
+          margin-top: 50px;
+          padding: 15px;
+          padding-top: none;
+          color: #2B2D42; }
+
 /*# sourceMappingURL=main.css.map */

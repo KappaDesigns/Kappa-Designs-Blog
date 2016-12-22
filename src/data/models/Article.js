@@ -5,9 +5,10 @@ const ArticleSchema = new mongoose.Schema({
   author: String,
   tag: String,
   bgImagePath: String,
-  HTML: String,
+  sections: Array,
   commentIDS: Array,
   likes: Number,
+  hoverColor: String,
   dislikes: Number,
   dateCreated: { type: Date, default: Date.now },
   dateModified: { type: Date, default: Date.now }
