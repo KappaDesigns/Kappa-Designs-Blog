@@ -1,0 +1,277 @@
+body, html {
+  margin: 0;
+  padding: 0; }
+
+.logo-main {
+  margin: 25px auto;
+  display: block;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150px;
+  height: 150px; }
+
+.login #tab-1 {
+  background-color: #f1efeb; }
+
+.register #tab-2 {
+  background-color: #f1efeb; }
+
+.login, .register {
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  width: 500px;
+  height: auto;
+  margin: 0 auto;
+  background-color: #f1efeb; }
+  .login .tabs .tab, .register .tabs .tab {
+    background-color: #bfbdb9; }
+  .login .tabs, .register .tabs {
+    display: flex; }
+    .login .tabs .tab, .register .tabs .tab {
+      text-decoration: none;
+      display: block;
+      color: black;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 50%;
+      height: 100px; }
+      .login .tabs .tab h2, .register .tabs .tab h2 {
+        color: black; }
+      .login .tabs .tab:hover h2, .register .tabs .tab:hover h2 {
+        transition: color 0.5s ease;
+        color: #a17400;
+        cursor: pointer; }
+  .login .input-container, .register .input-container {
+    width: 100%;
+    height: auto;
+    padding-top: 5px;
+    background-color: #f1efeb;
+    border-bottom: 1px solid black; }
+    .login .input-container .label, .register .input-container .label {
+      color: #a17400;
+      height: 35px;
+      font-size: 14px;
+      text-align: left;
+      padding: 0;
+      padding-left: 10px;
+      display: block; }
+    .login .input-container .username, .login .input-container .password, .register .input-container .username, .register .input-container .password {
+      color: #585858;
+      background-color: #f1efeb;
+      border: none;
+      width: 100%;
+      height: 35px;
+      font-size: 15px;
+      padding-left: 10px; }
+      .login .input-container .username:focus, .login .input-container .password:focus, .register .input-container .username:focus, .register .input-container .password:focus {
+        outline: none; }
+  .login .submit-btn, .register .submit-btn {
+    border: none;
+    color: white;
+    position: relative;
+    background-color: #42Af50;
+    height: 65px;
+    width: 48%;
+    margin-top: 10px;
+    border-bottom: 3px solid #248831; }
+    .login .submit-btn:hover, .register .submit-btn:hover {
+      transition: border 1s ease;
+      border-bottom: none; }
+    .login .submit-btn:focus, .register .submit-btn:focus {
+      outline: none; }
+  .login #Google, .login #Facebook, .login #Twitter, .register #Google, .register #Facebook, .register #Twitter {
+    position: relative;
+    height: 85px;
+    width: 100%;
+    display: flex; }
+    .login #Google .logo, .login #Facebook .logo, .login #Twitter .logo, .register #Google .logo, .register #Facebook .logo, .register #Twitter .logo {
+      width: 85px;
+      color: white;
+      height: auto; }
+      .login #Google .logo .icon, .login #Facebook .logo .icon, .login #Twitter .logo .icon, .register #Google .logo .icon, .register #Facebook .logo .icon, .register #Twitter .logo .icon {
+        width: 20px;
+        margin: 31px auto; }
+    .login #Google .platform-normal, .login #Facebook .platform-normal, .login #Twitter .platform-normal, .register #Google .platform-normal, .register #Facebook .platform-normal, .register #Twitter .platform-normal {
+      font-size: 20px;
+      text-align: center;
+      width: 80%;
+      color: white;
+      margin-top: 28px; }
+      .login #Google .platform-normal .bold, .login #Facebook .platform-normal .bold, .login #Twitter .platform-normal .bold, .register #Google .platform-normal .bold, .register #Facebook .platform-normal .bold, .register #Twitter .platform-normal .bold {
+        color: #f1efeb; }
+    .login #Google:hover, .login #Facebook:hover, .login #Twitter:hover, .register #Google:hover, .register #Facebook:hover, .register #Twitter:hover {
+      cursor: pointer; }
+  .login #Google, .register #Google {
+    background: linear-gradient(to right, #b52f1f 50%, #dd4b39 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease; }
+    .login #Google:hover, .register #Google:hover {
+      background-position: left bottom; }
+    .login #Google .logo, .register #Google .logo {
+      background-color: #b52f1f; }
+  .login #Facebook, .register #Facebook {
+    background: linear-gradient(to right, #283d68 50%, #3b5998 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease; }
+    .login #Facebook:hover, .register #Facebook:hover {
+      background-position: left bottom; }
+    .login #Facebook .logo, .register #Facebook .logo {
+      background-color: #283d68; }
+  .login #Twitter, .register #Twitter {
+    background: linear-gradient(to right, #0084b4 50%, #00aced 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.5s ease; }
+    .login #Twitter:hover, .register #Twitter:hover {
+      background-position: left bottom; }
+    .login #Twitter .logo, .register #Twitter .logo {
+      background-color: #0084b4; }
+
+.login .user-avatar {
+  border-radius: 100px;
+  display: block;
+  margin: 15px auto;
+  width: 100px;
+  height: 100px; }
+.login .submit-container {
+  margin: 10px 15px;
+  display: flex;
+  height: 100px; }
+  .login .submit-container li {
+    margin: 0;
+    margin-top: 32px;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    width: 50%;
+    padding-bottom: 3px; }
+    .login .submit-container li:hover {
+      cursor: pointer; }
+    .login .submit-container li .forgot-password {
+      margin-top: 30px;
+      font-size: 15px;
+      text-align: center;
+      color: #a17400;
+      text-decoration: none; }
+    .login .submit-container li:after {
+      content: '';
+      display: block;
+      margin: auto;
+      height: 1px;
+      width: 0px;
+      background: transparent;
+      transition: width .5s ease, background-color .5s ease; }
+    .login .submit-container li:hover:after {
+      width: 115px;
+      background: #a17400;
+      cursor: pointer; }
+
+.register .kicker {
+  margin: 35px 0;
+  text-align: center; }
+.register .input-container-2 {
+  display: flex; }
+  .register .input-container-2 #input-2 {
+    border-left: 1px solid black; }
+.register .submit-container {
+  height: 100px;
+  margin: 10px 15px;
+  display: flex; }
+  .register .submit-container .terms {
+    padding-right: 15px;
+    margin-top: 20px;
+    line-height: 1.5;
+    font-size: 15px;
+    text-align: center;
+    width: 50%; }
+    .register .submit-container .terms .term:after {
+      content: '';
+      display: block;
+      margin: 0 100px;
+      height: 1px;
+      width: 0px;
+      background: transparent;
+      transition: width .5s ease, background-color .5s ease; }
+    .register .submit-container .terms .term:hover:after {
+      width: 110px;
+      background: #a17400;
+      cursor: pointer; }
+    .register .submit-container .terms .term a {
+      text-decoration: none;
+      color: black;
+      transition: color 0.5s ease;
+      color: #a17400; }
+
+.home .navbar {
+  margin: 50px auto;
+  height: 20px;
+  border-radius: 0;
+  border: 1px solid #a17400;
+  border-right: none;
+  background-color: #e2e0dc;
+  display: flex;
+  width: 902px; }
+  .home .navbar .nav-tag {
+    text-transform: capitalize;
+    padding-top: 10px;
+    height: 100%;
+    font-size: 15px;
+    display: block;
+    width: 150px;
+    text-align: center;
+    border-right: 1px solid #a17400; }
+    .home .navbar .nav-tag:hover {
+      cursor: pointer;
+      background-color: #f1efeb; }
+.home .logo {
+  margin: 25px auto;
+  display: block;
+  background-color: #2B2D42;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150px;
+  height: 150px; }
+.home .login-btn, .home .register-btn {
+  height: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #2B2D42;
+  display: inline-block;
+  width: 100px;
+  text-align: center; }
+.home .btn-container {
+  width: 225px;
+  margin: 25px auto;
+  display: flex; }
+  .home .btn-container .button {
+    position: relative;
+    display: flex; }
+    .home .btn-container .button .login-btn {
+      background-color: #a17400; }
+      .home .btn-container .button .login-btn:hover {
+        color: #f1efeb; }
+    .home .btn-container .button .login-arrow {
+      width: 0;
+      height: 0;
+      border-bottom: 0 solid transparent;
+      border-left: 0 solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #a17400; }
+    .home .btn-container .button .register-btn {
+      background-color: #f1efeb; }
+      .home .btn-container .button .register-btn:hover {
+        color: #a17400; }
+    .home .btn-container .button .register-arrow {
+      margin-left: -25px;
+      width: 0;
+      height: 0;
+      border-right: 0 solid transparent;
+      border-top: 0 solid transparent;
+      border-left: 25px solid transparent;
+      border-bottom: 25px solid #f1efeb; }
+
+/*# sourceMappingURL=main.css.map */
