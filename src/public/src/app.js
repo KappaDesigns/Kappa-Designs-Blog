@@ -3,6 +3,8 @@ import ReactDom from "react-dom";
 import Login from "./scenes/Connect/Login";
 import Register from "./scenes/Connect/Register";
 import Home from "./scenes/Home";
+import CreateArticle from "./scenes/CreateArticle";
+import Article from "./scenes/Articles"
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import crypto from "crypto";
 
@@ -13,19 +15,19 @@ class App extends React.Component {
   constructor() {
     super();
     this.setStorage = this.setStorage.bind(this);
-    this.get = this.get.bind(this);
+    this.post = this.post.bind(this);
     this.setStorage();
   }
 
   setStorage() {
     crypto.pbkdf2(config.guestPassword, config.secret, 100, 512, 'sha512', (err, key) => {
-      this.get(`/authenticate?username=guest&password=${key.toString('hex')}`, (value) => {
+      this.post(`/authenticate?username=guest&password=${key.toString('hex')}`, (value) => {
         sessionStorage.setItem("token", value);
       });
     })
   }
 
-  get(url, callback) {
+  post(url, callback) {
     fetch(url, {method:'POST'}).then((res) => {
       res.json().then((obj) => {
         callback(obj.token);
@@ -39,6 +41,8 @@ class App extends React.Component {
         <Route path="/" component={Home}></Route>
         <Route path="login" component={Login}></Route>
         <Route path="register" component={Register}></Route>
+        <Route path="article/:id" component={Article}></Route>
+        <Route path="create" component={CreateArticle}></Route>
       </Router>
     );
   }

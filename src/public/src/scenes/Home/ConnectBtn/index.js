@@ -4,17 +4,40 @@ import Ink from "react-ink";
 
 export default class ConnectBtn extends React.Component {
   render() {
-    return (
-      <div className="btn-container">
-        <div className="button" id="login-btn">
-          <Link className="login-btn" to="/login"><Ink radius={25}></Ink>Login</Link>
-          <div className="login-arrow"></div>
+    let admin = true;
+    if (admin) {
+      return (
+        <div>
+          <div className="btn-container">
+            <div className="button" id="login-btn">
+              <Link className="login-btn" to="/login"><Ink radius={25}></Ink>Login</Link>
+              <div className="login-arrow"></div>
+            </div>
+            <div className="button" id="register-btn">
+              <div className="register-arrow"></div>
+              <Link className="register-btn" to="/register"><Ink radius={25}></Ink>Register</Link>
+            </div>
+          </div>
+          <div className="admin-container">
+            <div className="create-arrow-a"></div>
+            <Link className="create-btn" to="/create">Create</Link>
+            <div className="create-arrow-b"></div>
+          </div>
         </div>
-        <div className="button" id="register-btn">
-          <div className="register-arrow"></div>
-          <Link className="register-btn" to="/register"><Ink radius={25}></Ink>Register</Link>
+      );
+    } else {
+      return (
+        <div className="btn-container">
+          <div className="button" id="login-btn">
+            <Link className="login-btn" to="/login"><Ink radius={25}></Ink>Login</Link>
+            <div className="login-arrow"></div>
+          </div>
+          <div className="button" id="register-btn">
+            <div className="register-arrow"></div>
+            <Link className="register-btn" to="/register"><Ink radius={25}></Ink>Register</Link>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }

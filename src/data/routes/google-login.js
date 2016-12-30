@@ -28,7 +28,7 @@ passport.use(new GoogleStrategy({
 
 router.get('/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login']}));
 
-router.get('/google/callback', passport.authenticate('google'), (req, res, next) => {
+router.get('/google/callback', passport.authenticate('google', {session: true}), (req, res, next) => {
   res.redirect('/#/');
 })
 module.exports = router;

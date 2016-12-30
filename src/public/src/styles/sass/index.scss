@@ -7,3 +7,7 @@ body, html {
 @import "2-sections/index";
 @import "3-modules/index";
 @import "4-animations/index";
+
+body,html {
+  background-color: $kappa-dark-blue;
+}

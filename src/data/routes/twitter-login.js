@@ -30,7 +30,7 @@ passport.use(new TwitterStrategy({
 
 router.get('/twitter', passport.authenticate('twitter'));
 
-router.get('/twitter/callback', passport.authenticate('twitter'), (req, res, next) => {
+router.get('/twitter/callback', passport.authenticate('twitter', {session: true}), (req, res, next) => {
   res.redirect('/#/');
 });
 

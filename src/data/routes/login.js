@@ -25,7 +25,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
+  passport.authenticate('local', {session: true}, (err, user, info) => {
     console.log(err, user, info);
     if (err) { return next(err); }
     if (!user) { return res.sendStatus(404); }

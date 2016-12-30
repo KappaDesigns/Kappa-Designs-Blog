@@ -30,13 +30,13 @@ mongoose.connect(config.db)
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser('DankMemesCantMeltSteelBeams'));
 app.use(session({
-  secret: 'keyboard cat',
+  secret: 'DankMemesCantMeltSteelBeams',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }

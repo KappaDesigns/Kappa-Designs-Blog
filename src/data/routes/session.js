@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/session', (req, res, next) => {
-  res.json(req.user);
+  res.send(req.user);
 })
 
 router.get('/route', (req, res, next) => {

@@ -10,7 +10,9 @@ const ArticleSchema = new mongoose.Schema({
   likes: Number,
   hoverColor: String,
   dislikes: Number,
+  height: Number,
   dateCreated: { type: Date, default: Date.now },
-  dateModified: { type: Date, default: Date.now }
+  dateModified: { type: Date, default: Date.now },
+  featured: { type: Boolean, default: false}
 });
 module.exports = mongoose.model('Article', ArticleSchema);

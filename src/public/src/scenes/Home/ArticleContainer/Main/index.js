@@ -5,6 +5,7 @@ export default class Main extends React.Component {
   render() {
     return (
       <div className="row main">
+        <br></br>
         <h1 className="head"><span>Articles</span></h1>
         <div className="col-md-4">
           <Article height='400px' tag="new" backgroundColor="rgba(161, 116, 0, 0.75)" background="http://www.planwallpaper.com/static/images/colorful-triangles-background_yB0qTG6.jpg" title="Test"></Article>

@@ -1,5 +1,8 @@
 .home {
   .navbar {
+    -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
     margin: 50px auto;
     height: 20px;
     border-radius: 0;
@@ -7,7 +10,7 @@
     border-right: none;
     background-color: $kappa-white - 15;
     display: flex;
-    width: 902px;
+    width: 901px;
     .nav-tag {
       text-transform: capitalize;
       padding-top: 10px;
@@ -48,6 +51,7 @@
   .btn-container {
     width: 225px;
     margin: 25px auto;
+    margin-bottom: 0px;
     display: flex;
     .button {
       position: relative;
@@ -80,6 +84,41 @@
         border-top:  0 solid transparent;
         border-left: 25px solid transparent;
         border-bottom: 25px solid $kappa-white;
+      }
+    }
+  }
+  .admin-container {
+    width: 150px;
+    margin: 0 auto;
+    display: flex;
+    .create-arrow-a {
+      width: 0;
+      height: 0;
+      border-right: 0 solid transparent;
+      border-top:  25px solid $kappa-gray;
+      border-left: 25px solid transparent;
+      border-bottom: 0 solid transparent;
+    }
+    .create-arrow-b {
+      width: 0;
+      height: 0;
+      border-right: 25px solid transparent;
+      border-top:  25px solid $kappa-gray;
+      border-left: 0 solid transparent;
+      border-bottom: 0 solid transparent;
+    }
+    .create-btn {
+      display: block;
+      text-align: center;
+      width:100px;
+      background-color: $kappa-gray;
+      height: 25px;
+      font-size: 16px;
+      color: $kappa-light-blue;
+      &:hover {
+        text-decoration: none;
+        color: $kappa-dark-blue;
+        cursor: pointer;
       }
     }
   }
