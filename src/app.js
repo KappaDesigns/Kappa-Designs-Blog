@@ -32,15 +32,15 @@ mongoose.connect(config.db)
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
+app.use(cookieParser('DankMemesCantMeltSteelBeams'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('DankMemesCantMeltSteelBeams'));
 app.use(session({
   secret: 'DankMemesCantMeltSteelBeams',
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
-}))
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -54,17 +54,19 @@ passport.deserializeUser((id, done) => {
   })
 })
 
-app.use('/api', api);
-app.use('/api', article);
-app.use('/api', comment);
-app.use('/api', user);
-app.use('/', authenticate);
 app.use('/auth', login);
+app.use('/auth', logout);
 app.use('/auth', facebook);
 app.use('/auth', google);
 app.use('/auth', twitter);
 app.use('/auth', logout);
 app.use('/auth', authsession);
+app.use('/api', api);
+app.use('/api', article);
+app.use('/api', comment);
+app.use('/api', user);
+app.use('/', authenticate);
+
 
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!');

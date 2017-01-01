@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Article = require('../models/Article.js');
+
 router.get('/article/', (req, res, next) => {
   Article.find({featured: false}, (err, todos) => {
     if (err) return next(err);
@@ -9,9 +10,22 @@ router.get('/article/', (req, res, next) => {
   }).sort({ dateCreated: -1 })
 });
 
+router.get('/article/featured', (req, res, next) => {
+  Article.find({featured: true}, (err, todos) => {
+    if (err) return next(err);
+    res.json(todos);
+  }).sort({ dateCreated: -1 })
+});
+
+router.get('/article/all', (req, res, next) => {
+  Article.find({}, (err, todos) => {
+    if (err) return next(err);
+    res.json(todos);
+  }).sort({ dateCreated: -1 })
+});
+
 /* POST /todos */
 router.post('/article', (req, res, next) => {
-  console.log(req.body);
   Article.create(req.body, (err, post) => {
     if (err) return next(err);
     res.json(post);

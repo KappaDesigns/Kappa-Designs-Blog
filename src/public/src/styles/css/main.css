@@ -2,6 +2,26 @@ body, html {
   margin: 0;
   padding: 0; }
 
+.error {
+  background: repeating-linear-gradient(45deg, #ba3535, #ba3535 20px, #962e2e 20px, #962e2e 40px); }
+
+.success {
+  background: repeating-linear-gradient(45deg, #35ba3a, #35ba3a 20px, #207424 20px, #207424 40px); }
+
+.error, .success {
+  color: white;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 18px;
+  width: 100%; }
+
+.none {
+  display: none; }
+
 .logo-main {
   margin: 25px auto;
   display: block;
@@ -83,6 +103,7 @@ body, html {
       outline: none; }
   .login #Google, .login #Facebook, .login #Twitter, .register #Google, .register #Facebook, .register #Twitter {
     position: relative;
+    text-decoration: none;
     height: 85px;
     width: 100%;
     display: flex; }
@@ -277,25 +298,25 @@ body, html {
       border-top: 0 solid transparent;
       border-left: 25px solid transparent;
       border-bottom: 25px solid #f1efeb; }
-.home .admin-container {
+.home .create-container {
   width: 150px;
   margin: 0 auto;
   display: flex; }
-  .home .admin-container .create-arrow-a {
+  .home .create-container .create-arrow-a {
     width: 0;
     height: 0;
     border-right: 0 solid transparent;
     border-top: 25px solid #ecf1f4;
     border-left: 25px solid transparent;
     border-bottom: 0 solid transparent; }
-  .home .admin-container .create-arrow-b {
+  .home .create-container .create-arrow-b {
     width: 0;
     height: 0;
     border-right: 25px solid transparent;
     border-top: 25px solid #ecf1f4;
     border-left: 0 solid transparent;
     border-bottom: 0 solid transparent; }
-  .home .admin-container .create-btn {
+  .home .create-container .create-btn {
     display: block;
     text-align: center;
     width: 100px;
@@ -303,10 +324,75 @@ body, html {
     height: 25px;
     font-size: 16px;
     color: #8D99AE; }
-    .home .admin-container .create-btn:hover {
+    .home .create-container .create-btn:hover {
       text-decoration: none;
       color: #2B2D42;
       cursor: pointer; }
+
+.user-settings {
+  display: block;
+  position: fixed;
+  bottom: 25px;
+  right: 10%;
+  background-color: #ececec;
+  border: 3px solid #a17400;
+  padding: 7px; }
+  .user-settings:hover {
+    transition: 0.25s transform ease-in-out;
+    transform: scale(1.1);
+    cursor: pointer; }
+    .user-settings:hover i {
+      color: #a17400; }
+
+.user-profile {
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  display: block;
+  position: fixed;
+  bottom: 125px;
+  right: 10%;
+  background-color: #ececec;
+  border: 3px solid #a17400;
+  padding: 15px 7px; }
+  .user-profile h3 {
+    text-transform: capitalize;
+    text-align: center;
+    padding: 0;
+    margin: 15px; }
+  .user-profile input {
+    margin: 5px;
+    padding: 5px;
+    background-color: #ececec;
+    border: none;
+    border-bottom: 1px solid black; }
+    .user-profile input:focus {
+      outline: none; }
+  .user-profile .update {
+    display: block;
+    margin: 25px auto;
+    margin-top: 50px;
+    width: 50%;
+    border: none;
+    color: white;
+    background-color: #42Af50;
+    height: 65px;
+    border-bottom: 3px solid #248831;
+    margin-bottom: 25px; }
+    .user-profile .update:hover {
+      transition: border 1s ease;
+      border-bottom: none; }
+    .user-profile .update:focus {
+      outline: none; }
+  .user-profile .sign-out {
+    padding: 5px;
+    margin: 5px;
+    padding-top: 15px;
+    font-size: 16px; }
+    .user-profile .sign-out:hover {
+      cursor: pointer;
+      color: #a17400;
+      text-decoration: underline; }
 
 .article-container {
   -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
@@ -608,6 +694,13 @@ body, html {
   -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
   background-color: #f1efeb; }
+  .article-page .logo-link {
+    text-decoration: none; }
+    .article-page .logo-link .logo {
+      display: block;
+      margin: 25px auto;
+      width: 100px;
+      height: 100px; }
   .article-page .article .article-title {
     display: block;
     width: 100%;
@@ -692,13 +785,88 @@ body, html {
   padding: 25px;
   background-color: #f1efeb;
   margin-top: 25px; }
+  .comment h5 {
+    font-size: 18px;
+    text-transform: capitalize; }
+  .comment img {
+    margin-right: 25px;
+    width: 25px;
+    height: 25px; }
   .comment .center {
     text-align: center;
     width: 100%; }
     .comment .center .likes {
       margin-right: 25px; }
+      .comment .center .likes:hover {
+        color: #42Af50;
+        cursor: pointer; }
+    .comment .center .dislikes:hover {
+      color: #af4242;
+      cursor: pointer; }
     .comment .center .reply {
       margin-left: 25px; }
+      .comment .center .reply:hover {
+        cursor: pointer; }
+
+.admin-container {
+  background-color: #f1efeb;
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.75);
+  padding-bottom: 100px; }
+  .admin-container .header {
+    text-align: center; }
+  .admin-container .logo {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    display: block; }
+  .admin-container .articles {
+    width: 90%;
+    margin: 0 auto; }
+    .admin-container .articles .article-header {
+      height: 50px;
+      background-color: #e7e5e1;
+      text-align: center; }
+      .admin-container .articles .article-header td {
+        border: 1px solid black; }
+    .admin-container .articles .article {
+      height: 100px;
+      background-color: #e7e5e1; }
+      .admin-container .articles .article .featured {
+        width: 10%;
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid black; }
+      .admin-container .articles .article .title {
+        border: 1px solid black;
+        padding-left: 25px; }
+      .admin-container .articles .article:hover {
+        cursor: pointer;
+        background-color: #d8d6d2; }
+  .admin-container .footer {
+    height: 75px;
+    background: #ecf1f4;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    width: 100%; }
+    .admin-container .footer button {
+      display: block;
+      margin: 25px auto;
+      width: 15%;
+      border: none;
+      color: white;
+      background-color: #42Af50;
+      height: 50px;
+      margin-top: 10px;
+      border-bottom: 3px solid #248831; }
+      .admin-container .footer button:hover {
+        transition: border 1s ease;
+        border-bottom: none; }
+      .admin-container .footer button:focus {
+        outline: none; }
 
 body, html {
   background-color: #2B2D42; }

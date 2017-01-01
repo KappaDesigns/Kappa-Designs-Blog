@@ -28,7 +28,7 @@ passport.use(new FacebookStrategy({
 
 router.get('/facebook', passport.authenticate('facebook'));
 
-router.get('/facebook/callback', passport.authenticate('facebook', {session: true}), (req, res, next) => {
+router.get('/facebook/callback', passport.authenticate('facebook', {session: true }), (req, res, next) => {
   res.redirect('/auth/route');
 });
 

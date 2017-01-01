@@ -7,7 +7,7 @@ export default class Navtag extends React.Component {
   }
   render() {
     return (
-      <span className="nav-tag" id={'tag-'+this.props.tag}>{this.props.tag}</span>
+      <span onClick={this.props.handleClick} className="nav-tag" id={this.props.tag}>{this.props.tag}</span>
     )
   }
 }

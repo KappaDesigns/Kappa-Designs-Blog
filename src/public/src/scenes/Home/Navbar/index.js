@@ -5,7 +5,7 @@ import { Link } from "react-router";
 export default class Navbar extends React.Component {
   render() {
     let createNavTag = (tag, i) => {
-      return (<Navtag key={i} tag={tag}>{tag}</Navtag>)
+      return (<Navtag handleClick={this.props.handleFilter} key={i} tag={tag}>{tag}</Navtag>)
     }
 
     return (

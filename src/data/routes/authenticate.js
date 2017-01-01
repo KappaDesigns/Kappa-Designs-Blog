@@ -5,7 +5,7 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const config = require('../../config');
 router.post('/authenticate', (req, res, next) => {
-  
+
   if (req.query.username !== undefined && (req.query.password !== undefined || req.query.provider !== undefined)) {
     User.findOne({username: req.query.username}, (err, user) => {
       if (err) throw err;

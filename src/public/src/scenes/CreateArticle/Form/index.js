@@ -1,6 +1,7 @@
 import React from "react";
 import Sections from "./Sections";
 import Dropdown from "./DropDown";
+import { hashHistory } from "react-router";
 
 export default class Form extends React.Component {
   constructor() {
@@ -18,11 +19,12 @@ export default class Form extends React.Component {
     this.handleEnter = this.handleEnter.bind(this);
     this.handleExit = this.handleExit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.authorize = this.authorize.bind(this);
     this.state = {
       title:'',
       desc: '',
       tag:'world',
-      author: 'Evan Coulson',
+      author: '',
       imagePath: '',
       displayImage: 'http://placehold.it/350x200',
       color: 'rgba(161, 116, 0, 0.75)',
@@ -36,6 +38,26 @@ export default class Form extends React.Component {
         }
       ]
     }
+    this.authorize();
+  }
+
+  authorize() {
+    fetch(`/auth/user`, {method: 'get', credentials:'same-origin'})
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => {
+      if (json.securityLevel < 1) {
+        hashHistory.push('/login')
+      }
+      console.log(json);
+      this.setState({
+        author:`${json.firstName} ${json.lastName}`
+      })
+    })
+    .catch((err) => {
+      hashHistory.push('/login');
+    })
   }
 
   handleFileChange(e) {
@@ -144,6 +166,7 @@ export default class Form extends React.Component {
     console.log(this.state);
     fetch(`/api/article?token=${sessionStorage.token}`, {
       method: "post",
+      credentials: 'same-origin',
       body: JSON.stringify({
         title: this.state.title,
         desc: this.state.desc,
@@ -171,12 +194,11 @@ export default class Form extends React.Component {
     }
     let bg1 = this.isActive(1);
     let bg2 = this.isActive(2);
-    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit} id="create-form" className="create-form">
         <input value={this.state.title} onChange={this.handleTitleChange} className="title" placeholder="Title..."></input>
         <Dropdown selected={this.state.tag} isHover={this.state.isHover}  handleExit={this.handleExit} handleEnter={this.handleEnter} handleClick={this.handleDropdownClick} tags={['world','gaming','dev','food','misc']}></Dropdown>
-        <h4 className="author"><i>Evan Coulson</i></h4>
+        <h4 className="author"><i>{this.state.author}</i></h4>
         <input value={this.state.desc} onChange={this.handleDescChange} className="desc" placeholder="Description... (1 - 2 Sentences)"></input>
         <img alt="Background Image Here" id="bg-image" className="bg-image" src={this.state.displayImage}></img>
         <input onChange={this.handleFileChange} className="bg-input"></input>

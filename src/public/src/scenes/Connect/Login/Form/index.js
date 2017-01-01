@@ -15,6 +15,8 @@ export default class Form extends React.Component {
     this.passwordChange = this.passwordChange.bind(this);
     this.usernameChange = this.usernameChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.displayError = this.displayError.bind(this);
+    this.displaySuccess = this.displaySuccess.bind(this);
   }
 
   passwordChange(e) {
@@ -25,16 +27,49 @@ export default class Form extends React.Component {
     this.setState({username: e.target.value});
   }
 
+  displayError(err) {
+    this.setState({
+      error: err,
+      errClass: 'error'
+    })
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+    }.bind(this), 2000);
+  }
+
+  displaySuccess() {
+    setTimeout(function () {
+      this.setState({
+        error: 'Successfully Logged In',
+        errClass: 'success'
+      })
+    }.bind(this), 0);
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+      hashHistory.push('/');
+    }.bind(this), 2000);
+  }
+
   handleSubmit(e) {
     crypto.pbkdf2(this.state.password, config.secret, 100, 512, 'sha512', (err, key) => {
       if (err) throw err;
       fetch('/auth/login?username='+this.state.username+'&password='+key.toString('hex'), {
          method: 'POST',
+         credentials: 'same-origin',
       }).then((res) => {
-        if (res.status != 404) {
-          hashHistory.push('/');
+        return res.json();
+      })
+      .then((d) => {
+        if (d.success) {
+          this.displaySuccess();
         } else {
-          hashHistory.push('/login');
+          this.displayError('Incorrect Username Or Password')
         }
       })
     })
@@ -44,6 +79,7 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
+        <div className={this.state.errClass}>{this.state.error}</div>
         <img className="user-avatar" src="images/avatar.png"></img>
         <form onSubmit={this.handleSubmit}>
           <div className="input-container">

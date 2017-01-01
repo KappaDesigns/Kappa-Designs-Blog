@@ -6,7 +6,8 @@ export default class Article extends React.Component {
   constructor() {
     super();
     this.state = {
-      hover: false
+      hover: false,
+      fetched: false
     }
     this.handleEnter = this.handleEnter.bind(this);
     this.handleExit = this.handleExit.bind(this);

@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/session', (req, res, next) => {
-  res.send(req.user);
+router.get('/user', (req, res, next) => {
+  if (req.user !== undefined) {
+    res.json(req.user);
+  } else {
+    res.sendStatus(403);
+  }
 })
 
 router.get('/route', (req, res, next) => {

@@ -8,7 +8,10 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     var unhashedPassword = password;
     var passedUsername = username;
+    console.log('\n'+passedUsername+'\n');
+    console.log(+unhashedPassword+'\n');
     User.findOne({ username: passedUsername, provider: 'local' }, function(err, user) {
+      console.log(user+"\n");
       if (err) {
         return done(err);
       }
@@ -26,14 +29,15 @@ passport.use(new LocalStrategy(
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {session: true}, (err, user, info) => {
-    console.log(err, user, info);
     if (err) { return next(err); }
-    if (!user) { return res.sendStatus(404); }
-    console.log(req.logIn);
+    console.log('\n'+user+'\n');
+    if (!user) { return res.status(404).send({ message: 'Failed To Login', success: false }); }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      console.log(req.user);
-      return res.send(user);
+      return res.status(200).send({
+        message:'Success',
+        success: true,
+      });
     })
   })(req,res,next);
 })

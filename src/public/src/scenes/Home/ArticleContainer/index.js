@@ -1,6 +1,5 @@
 import React from "react";
 import Featured from "./Featured";
-import Main from "./Main";
 import Masonry from 'react-masonry-component';
 import Article from "./Article";;
 
@@ -11,27 +10,6 @@ let masonryOptions = {
 
 
 export default class ArticleContainer extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isFetched : false,
-      fetchedTotal : 0
-    }
-    fetch(`/api/article?token=${sessionStorage.token}&amount=0`, {method: 'get'})
-    .then((res) => {
-      return res.json()
-    })
-    .then((json) => {
-      let amount = this.state.fetchedTotal + 10;
-      this.setState({
-        articles: json,
-        isFetched : true,
-        fetching: false,
-        fetchedTotal: amount
-      })
-    })
-  }
-
   render() {
     let childElements = function(article, i) {
       return (
@@ -39,12 +17,12 @@ export default class ArticleContainer extends React.Component {
       );
     };
 
-    if (this.state.isFetched) {
+    if (this.props.isFetched) {
       return (
         <div className="container article-container">
           <Featured></Featured>
           <Masonry className={'masonry-container'} elementType={'ul'} options={masonryOptions} disableImagesLoaded={false} updateOnEachImageLoad={false}>
-            {this.state.articles.map(childElements)}
+            {this.props.filtered.map(childElements)}
           </Masonry>
         </div>
       );

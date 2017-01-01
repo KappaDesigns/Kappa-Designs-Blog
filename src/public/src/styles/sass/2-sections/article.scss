@@ -3,6 +3,15 @@
   -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.75);
   background-color: $kappa-white;
+  .logo-link {
+    text-decoration: none;
+    .logo {
+      display: block;
+      margin: 25px auto;
+      width: 100px;
+      height: 100px;
+    }
+  }
   .article {
     .article-title {
       display: block;
@@ -105,13 +114,35 @@
   padding: 25px;
   background-color: $kappa-white;
   margin-top: 25px;
+  h5 {
+    font-size: 18px;
+    text-transform: capitalize;
+  }
+  img {
+    margin-right: 25px;
+    width: 25px;
+    height: 25px;
+  }
   .center {
     text-align: center;
     width: 100%;
     .likes {
       margin-right: 25px;
+      &:hover {
+        color: #42Af50;
+        cursor: pointer;
+      }
+    }
+    .dislikes {
+      &:hover {
+        color: #af4242;
+        cursor: pointer;
+      }
     }
     .reply {
+      &:hover {
+        cursor: pointer;
+      }
       margin-left: 25px;
     }
   }

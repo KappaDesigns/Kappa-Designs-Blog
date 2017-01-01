@@ -1,3 +1,38 @@
+.error {
+  background: repeating-linear-gradient(
+    45deg,
+    #ba3535,
+    #ba3535 20px,
+    #962e2e 20px,
+    #962e2e 40px
+  );
+}
+
+.success {
+  background: repeating-linear-gradient(
+    45deg,
+    #35ba3a,
+    #35ba3a 20px,
+    #207424 20px,
+    #207424 40px
+  );
+}
+
+.error,.success {
+
+  color: white;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 15px 10px;
+  text-align: center;
+  font-size:18px;
+  width: 100%;
+}
+.none {
+  display: none;
+}
 .logo-main {
   margin: 25px auto;
   display: block;
@@ -99,6 +134,7 @@
   }
   #Google,#Facebook,#Twitter {
     position: relative;
+    text-decoration: none;
     height: 85px;
     width: 100%;
     display: flex;

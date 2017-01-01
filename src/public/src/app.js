@@ -4,7 +4,9 @@ import Login from "./scenes/Connect/Login";
 import Register from "./scenes/Connect/Register";
 import Home from "./scenes/Home";
 import CreateArticle from "./scenes/CreateArticle";
-import Article from "./scenes/Articles"
+import Article from "./scenes/Articles";
+import Admin from "./scenes/Admin";
+import Edit from "./scenes/Edit"
 import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import crypto from "crypto";
 
@@ -43,6 +45,8 @@ class App extends React.Component {
         <Route path="register" component={Register}></Route>
         <Route path="article/:id" component={Article}></Route>
         <Route path="create" component={CreateArticle}></Route>
+        <Route path="admin" component={Admin}></Route>
+        <Route path="edit/:id" component={Edit}></Route>
       </Router>
     );
   }

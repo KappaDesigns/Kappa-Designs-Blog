@@ -1,6 +1,6 @@
 import React from "react";
 import Ink from "react-ink";
-import { Link } from "react-router";
+import { Link, hashHistory } from "react-router";
 import crypto from "crypto";
 import config from "../../../../../../config.js";
 
@@ -25,7 +25,25 @@ export default class Form extends React.Component {
     this.handleRetypedPasswordChange = this.handleRetypedPasswordChange.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
     this.displayError = this.displayError.bind(this);
+    this.displaySuccess = this.displaySuccess.bind(this);
   }
+
+  displaySuccess() {
+    setTimeout(function () {
+      this.setState({
+        error: 'Successfully Registered',
+        errClass: 'success'
+      })
+    }.bind(this), 0);
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+      hashHistory.push('/');
+    }.bind(this), 2000);
+  }
+
 
   handleRegistration(e) {
     e.preventDefault();
@@ -36,7 +54,9 @@ export default class Form extends React.Component {
             if (this.state.password !== '' && this.state.retypedPassword !== '' && !this.state.password.includes(' ') && this.state.password == this.state.retypedPassword) {
               crypto.pbkdf2(this.state.password, config.secret, 100, 512, 'sha512', (err, key) => {
                 let t = sessionStorage.getItem('token');
+                this.displayError({})
                 fetch(`/api/user?username=${this.state.username}&email=${this.state.email}&firstName=${this.state.firstName}&lastName=${this.state.lastName}&provider=${this.state.provider}&token=${t}&password=${key.toString('hex')}`, { method:'POST'});
+                this.displaySuccess();
               })
             } else {
               if (this.state.password == '')
@@ -68,8 +88,19 @@ export default class Form extends React.Component {
     }
   }
 
+
+
   displayError(err) {
-    console.log(err);
+    this.setState({
+      error: err.error,
+      errClass: 'error'
+    })
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+    }.bind(this), 2000);
   }
 
   handleUserChange(e) {
@@ -111,6 +142,7 @@ export default class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleRegistration}>
+        <div className={this.state.errClass}>{this.state.error}</div>
         <h4 className="kicker">Enter your personal details to <b>create an acount</b></h4>
         <div className="input-container-2">
           <div className="input-container">
