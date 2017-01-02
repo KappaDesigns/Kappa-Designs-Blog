@@ -9,6 +9,6 @@ const UserSchema = new mongoose.Schema({
   recentlyViewed: Array,
   securityLevel: { type: Number, default: 0},
   dateJoined: { type: Date, default: Date.now },
-  imgUrl: { type:String, default: 'https://avatars0.githubusercontent.com/u/9276074?v=3&s=40'}
+  imgUrl: { type:String, default: 'http://image.flaticon.com/icons/svg/149/149071.svg'}
 });
 module.exports = mongoose.model('User', UserSchema);

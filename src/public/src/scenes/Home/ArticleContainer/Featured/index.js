@@ -25,11 +25,10 @@ export default class Featured extends React.Component {
     let getArticle = (i) => {
       let article = this.state.articles[i];
       return (
-        <Article key={i} articleid={article._id} height={500} tag={article.tag} backgroundColor={article.hoverColor} background={article.bgImagePath} title={article.title}></Article>
+        <Article desc={article.desc} key={i} articleid={article._id} height={500} tag={article.tag} backgroundColor={article.hoverColor} background={article.bgImagePath} title={article.title}></Article>
       )
     }
     if (this.state.fetched) {
-      console.log(this.state.articles);
       return (
         <div className="row featured">
           <h1 className="head"><span>Featured</span></h1>

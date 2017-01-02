@@ -22,6 +22,8 @@
       padding-top: 100px;
       color:$kappa-white;
       font-size: 48px;
+      background-size: cover;
+      background-position: center center;
       -webkit-box-shadow: inset 0px 0px 24px 3px rgba(0,0,0,0.75);
       -moz-box-shadow: inset 0px 0px 24px 3px rgba(0,0,0,0.75);
       box-shadow: inset 0px 0px 24px 3px rgba(0,0,0,0.75);
@@ -110,7 +112,7 @@
   }
 }
 .comment {
-  width: 100%;
+  float:right;
   padding: 25px;
   background-color: $kappa-white;
   margin-top: 25px;

@@ -30,7 +30,7 @@ export default class Article extends React.Component {
       this.setState({
         article:json,
         fetched:true,
-        index:json.commentIDS.length
+        index:0
       })
     });
     fetch(`/auth/user/`, {method: 'get',credentials: 'same-origin',})
@@ -67,7 +67,7 @@ export default class Article extends React.Component {
         user: this.state.user.username,
         usersLiked: [],
         usersDisliked: [],
-        imgPath: 'https://avatars0.githubusercontent.com/u/9276074?v=3&s=40',
+        imgPath: this.state.user.imgUrl,
         replyLevel: this.state.level
       })
       fetch(`/api/article/${this.state.article._id}?token=${sessionStorage.token}`, {
@@ -82,8 +82,12 @@ export default class Article extends React.Component {
         }
       })
       this.setState({
-        commentPosted: true
+        commentPosted: true,
+        type:'Comment',
+        level: 1,
+        index: 0,
       })
+      console.log(this.state);
       setTimeout(this.reset, 1000);
     }
   }
@@ -102,14 +106,17 @@ export default class Article extends React.Component {
       let comment = a.commentIDS[index]
       let likers = comment.usersLiked;
       let dislikers = comment.usersDisliked;
-      if (dislikers.includes('test')) {
+      if (dislikers.includes(this.state.user._id)) {
         comment.dislikes--;
-        dislikers.splice(index, 1);
+        dislikers = dislikers.splice(index, 1);
       }
-      if (!likers.includes('test')) {
+      if (!likers.includes(this.state.user._id)) {
         comment.likes++;
-        likers.push('test');
+        likers.push(this.state.user._id);
       }
+      comment.usersLiked = likers;
+      comment.usersDisliked = dislikers;
+      a.commentIDS[index] = comment;
       this.setState({
         article: a
       })
@@ -135,14 +142,17 @@ export default class Article extends React.Component {
       let comment = a.commentIDS[index]
       let likers = comment.usersLiked;
       let dislikers = comment.usersDisliked;
-      if (likers.includes(this.state.user.username)) {
+      if (likers.includes(this.state.user._id)) {
         comment.likes--;
-        likers.splice(index, 1);
+        likers = likers.splice(index, 1);
       }
-      if (!dislikers.includes(this.state.user.username)) {
+      if (!dislikers.includes(this.state.user._id)) {
         comment.dislikes++;
-        dislikers.push(this.state.user.username);
+        dislikers.push(this.state.user._id);
       }
+      comment.usersLiked = likers;
+      comment.usersDisliked = dislikers;
+      a.commentIDS[index] = comment;
       this.setState({
         article: a
       })
@@ -202,8 +212,9 @@ export default class Article extends React.Component {
     }
 
     let createComments = function (comment, i) {
+      console.log(comment.replyLevel);
       let style = {
-        marginLeft:25 * comment.replyLevel,
+        width:(100 - ((comment.replyLevel - 1) * 2)) + '%',
       }
       return (
         <div style={style} key={i} id={`comment-${i}`} className="comment">

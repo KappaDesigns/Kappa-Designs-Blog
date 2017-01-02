@@ -10,6 +10,10 @@ passport.use(new GoogleStrategy({
   clientSecret: config.googleSecret,
   callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
+  let img = 'http://image.flaticon.com/icons/svg/149/149071.svg'
+  if (profile.hasOwnProperty('photos')) {
+    img = profile.photos[0].value;
+  }
   User.findOne({username: profile.displayName, provider: profile.provider}, (err, user) => {
     if (err) { return done(err); }
     if (user) {
@@ -17,7 +21,8 @@ passport.use(new GoogleStrategy({
     } else {
       User.create({
         username: profile.displayName,
-        provider: profile.provider
+        provider: profile.provider,
+        imgUrl: img
       }, (err, user) => {
         if (err) { return done(err) }
         done(null, user);

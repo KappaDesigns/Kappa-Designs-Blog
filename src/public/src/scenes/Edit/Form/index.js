@@ -49,7 +49,7 @@ export default class Form extends React.Component {
       tag:article.tag,
       author: article.author,
       imagePath: article.bgImagePath,
-      displayImage: 'http://placehold.it/350x200',
+      displayImage: 'http://placehold.it/200x150',
       color: article.hoverColor,
       selected: 1,
       isHover : false,
@@ -77,7 +77,7 @@ export default class Form extends React.Component {
       let val = e.target.value
       fetch(val, {method:'get',mode:'no-cors'})
       .then((res) => {
-        console.log(res);
+        (res);
         if (res.status != 404) {
           return true
         } else {
@@ -85,13 +85,13 @@ export default class Form extends React.Component {
         }
       })
       .then((blob) => {
-        console.log(blob);
+        (blob);
         if (blob) {
           this.setState({displayImage:val})
         }
       })
       .catch((err) => {
-        console.log(err);
+        (err);
       })
     }
 
@@ -175,7 +175,7 @@ export default class Form extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    (this.state);
     fetch(`/api/article/${this.props.article._id}?token=${sessionStorage.token}`, {
       method: "put",
       credentials: 'same-origin',
@@ -196,6 +196,41 @@ export default class Form extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then((res) => {
+      this.displaySuccess();
+    })
+    .catch((err) => {
+      this.displayError('Something Went Wrong')
+    })
+  }
+
+  displayError(err) {
+    this.setState({
+      error: err,
+      errClass: 'error'
+    })
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+    }.bind(this), 2000);
+  }
+
+  displaySuccess() {
+    setTimeout(function () {
+      this.setState({
+        error: 'Successfully Edited Article',
+        errClass: 'success'
+      })
+    }.bind(this), 0);
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+      hashHistory.push('/');
+    }.bind(this), 2000);
   }
 
   render() {
@@ -208,6 +243,7 @@ export default class Form extends React.Component {
     let bg2 = this.isActive(2);
     return (
       <form onSubmit={this.handleSubmit} id="create-form" className="create-form">
+        <div className={this.state.errClass}>{this.state.error}</div>
         <input value={this.state.title} onChange={this.handleTitleChange} className="title" placeholder="Title..."></input>
         <Dropdown selected={this.state.tag} isHover={this.state.isHover}  handleExit={this.handleExit} handleEnter={this.handleEnter} handleClick={this.handleDropdownClick} tags={['world','gaming','dev','food','misc']}></Dropdown>
         <h4 className="author"><i>Evan Coulson</i></h4>

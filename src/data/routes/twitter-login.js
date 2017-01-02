@@ -10,7 +10,12 @@ passport.use(new TwitterStrategy({
   consumerSecret: config.twitterSecret,
   callbackURL: '/auth/twitter/callback',
 }, (accessToken, refreshToken, profile, done) => {
-  User.findOne({username: profile.displayName, provider: profile.provider}, (err, user) => {
+  console.log(profile);
+  let img = 'http://image.flaticon.com/icons/svg/149/149071.svg'
+  if (profile.hasOwnProperty('photos')) {
+    img = profile.photos[0].value;
+  }
+  User.findOne({username: profile.username, provider: profile.provider}, (err, user) => {
     console.log(profile.provider);
     if (err) { return done(err); }
     if (user) {
@@ -19,7 +24,8 @@ passport.use(new TwitterStrategy({
     } else {
       User.create({
         username: profile.displayName,
-        provider: profile.provider
+        provider: profile.provider,
+        imgUrl: img
       }, (err, user) => {
         if (err) { return done(err) }
         done(null, user);

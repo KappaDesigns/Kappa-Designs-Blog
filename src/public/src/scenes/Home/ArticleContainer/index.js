@@ -13,7 +13,7 @@ export default class ArticleContainer extends React.Component {
   render() {
     let childElements = function(article, i) {
       return (
-        <Article key={i} articleid={article._id} height={article.height} tag={article.tag} backgroundColor={article.hoverColor} background={article.bgImagePath} title={article.title}></Article>
+        <Article desc={article.desc} key={i} articleid={article._id} height={article.height} tag={article.tag} backgroundColor={article.hoverColor} background={article.bgImagePath} title={article.title}></Article>
       );
     };
 

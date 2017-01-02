@@ -185,7 +185,6 @@ export default class UserSettings extends React.Component {
                     }
                   })
                   .catch((err) => {
-                    console.log(err);
                   })
                 } else {
                   if (this.state.pass != '') {
@@ -290,13 +289,12 @@ export default class UserSettings extends React.Component {
   }
 
   signout() {
-    console.log("here");
     fetch(`/auth/logout`, {method:'get', credentials:'same-origin'})
     .then((res) => {
       hashHistory.push('/login')
     })
     .catch((err) => {
-      console.log(err);
+      displayError(err);
     })
   }
 
@@ -321,20 +319,14 @@ export default class UserSettings extends React.Component {
           </div>
           <div className="user-profile">
             <h3>{this.state.user.username + "'s Profile"}</h3>
+            <span onClick={this.signout} className="sign-out">Logout</span>
             <input onChange={this.handleUsername} value={this.state.user.username} placeholder="Username..."></input>
-            <br></br>
             <input onChange={this.handleEmail} value={this.state.user.email} placeholder="Email..."></input>
-            <br></br>
             <input onChange={this.handleFirstName} value={this.state.user.firstName} placeholder="First Name..."></input>
-            <br></br>
             <input onChange={this.handleLastName} value={this.state.user.lastName} placeholder="Last Name..."></input>
-            <br></br>
             <input type="password" onChange={this.handlePassword} value={this.state.pass} placeholder="New Password..."></input>
             <input type="password" onChange={this.handleRetypePassword} value={this.state.retype} placeholder="Retype Password..."></input>
-            <br></br>
             <input onChange={this.handleImage} value={this.state.user.imgUrl} placeholder="Image URL"></input>
-            <br></br>
-            <span onClick={this.signout} className="sign-out">Logout</span>
             <button onClick={this.handleSubmit} className="update">Update</button>
           </div>
         </div>

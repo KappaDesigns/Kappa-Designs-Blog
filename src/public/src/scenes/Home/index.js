@@ -37,7 +37,7 @@ export default class Home extends React.Component {
         a.push(this.state.articles[i]);
       }
     }
-    console.log(a);
+    (a);
     this.setState({
       filtered: a,
     })

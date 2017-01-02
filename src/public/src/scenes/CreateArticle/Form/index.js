@@ -20,13 +20,15 @@ export default class Form extends React.Component {
     this.handleExit = this.handleExit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.authorize = this.authorize.bind(this);
+    this.displayError = this.displayError.bind(this);
+    this.displaySuccess = this.displaySuccess.bind(this);
     this.state = {
       title:'',
       desc: '',
       tag:'world',
       author: '',
       imagePath: '',
-      displayImage: 'http://placehold.it/350x200',
+      displayImage: 'http://placehold.it/200x150',
       color: 'rgba(161, 116, 0, 0.75)',
       selected: 1,
       isHover : false,
@@ -50,7 +52,6 @@ export default class Form extends React.Component {
       if (json.securityLevel < 1) {
         hashHistory.push('/login')
       }
-      console.log(json);
       this.setState({
         author:`${json.firstName} ${json.lastName}`
       })
@@ -65,7 +66,7 @@ export default class Form extends React.Component {
       let val = e.target.value
       fetch(val, {method:'get',mode:'no-cors'})
       .then((res) => {
-        console.log(res);
+        (res);
         if (res.status != 404) {
           return true
         } else {
@@ -73,13 +74,13 @@ export default class Form extends React.Component {
         }
       })
       .then((blob) => {
-        console.log(blob);
+        (blob);
         if (blob) {
           this.setState({displayImage:val})
         }
       })
       .catch((err) => {
-        console.log(err);
+        (err);
       })
     }
 
@@ -163,7 +164,6 @@ export default class Form extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     fetch(`/api/article?token=${sessionStorage.token}`, {
       method: "post",
       credentials: 'same-origin',
@@ -184,6 +184,45 @@ export default class Form extends React.Component {
         'Content-Type': 'application/json'
       }
     })
+    .then((res) => {
+      this.displaySuccess();
+      return res.json();
+    })
+    .then((json) => {
+
+    })
+    .catch((err) => {
+      this.displayError('Something Went Wrong');
+    })
+  }
+
+  displayError(err) {
+    this.setState({
+      error: err,
+      errClass: 'error'
+    })
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+    }.bind(this), 2000);
+  }
+
+  displaySuccess() {
+    setTimeout(function () {
+      this.setState({
+        error: 'Successfully Created Article',
+        errClass: 'success'
+      })
+    }.bind(this), 0);
+    setTimeout(function () {
+      this.setState({
+        error: '',
+        errClass: 'none'
+      })
+      hashHistory.push('/');
+    }.bind(this), 2000);
   }
 
   render() {
@@ -196,6 +235,7 @@ export default class Form extends React.Component {
     let bg2 = this.isActive(2);
     return (
       <form onSubmit={this.handleSubmit} id="create-form" className="create-form">
+        <div className={this.state.errClass}>{this.state.error}</div>
         <input value={this.state.title} onChange={this.handleTitleChange} className="title" placeholder="Title..."></input>
         <Dropdown selected={this.state.tag} isHover={this.state.isHover}  handleExit={this.handleExit} handleEnter={this.handleEnter} handleClick={this.handleDropdownClick} tags={['world','gaming','dev','food','misc']}></Dropdown>
         <h4 className="author"><i>{this.state.author}</i></h4>

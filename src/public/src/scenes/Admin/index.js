@@ -23,7 +23,6 @@ export default class Admin extends React.Component {
           count++;
         }
       }
-      console.log(count);
       this.setState({
         fetched: true,
         articles: json,
@@ -76,9 +75,7 @@ export default class Admin extends React.Component {
   handleClick(e) {
     let checked = this.state.checked;
     let i = parseInt(e.target.id.substring(9));
-    console.log(this.state.featured < 2);
     checked[i] = !checked[i];
-    console.log(checked[i]);
     if (checked[i] && this.state.featured < 2) {
       let count = this.state.featured + 1;
       this.setState({

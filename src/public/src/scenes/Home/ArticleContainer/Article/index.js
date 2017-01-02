@@ -45,7 +45,7 @@ export default class Article extends React.Component {
           <Tag tag={this.props.tag}></Tag>
           <h1 className="article-title">{this.props.title}</h1>
           <div className="article-hover">
-            <p className="article-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </p>
+            <p className="article-desc">{this.props.desc}</p>
           </div>
         </div>
       </Link>
