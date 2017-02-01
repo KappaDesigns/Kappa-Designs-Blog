@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Ink from "react-ink";
+import 'whatwg-fetch'; 
 
 export default class ConnectBtn extends React.Component {
 

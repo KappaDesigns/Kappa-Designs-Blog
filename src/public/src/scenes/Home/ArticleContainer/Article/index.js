@@ -1,6 +1,7 @@
 import React from "react";
 import Tag from "./Tag";
-import { Link } from "react-router"
+import { Link } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Article extends React.Component {
   constructor() {

@@ -3,6 +3,7 @@ import Ink from "react-ink";
 import { hashHistory } from "react-router";
 import crypto from "crypto";
 import config from "../../../../../../config";
+import 'whatwg-fetch'; 
 
 export default class Form extends React.Component {
   constructor() {

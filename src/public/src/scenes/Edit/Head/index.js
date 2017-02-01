@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
+import 'whatwg-fetch'; 
+
 export default class Head extends React.Component {
   render() {
     return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, hashHistory } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Admin extends React.Component {
   constructor() {

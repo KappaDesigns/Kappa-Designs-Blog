@@ -1,5 +1,6 @@
 import React from "react";
 import Article from "../Article";
+import 'whatwg-fetch'; 
 
 export default class Featured extends React.Component {
 

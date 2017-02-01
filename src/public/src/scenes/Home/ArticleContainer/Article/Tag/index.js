@@ -1,4 +1,5 @@
 import React from "react";
+import 'whatwg-fetch'; 
 
 export default class Tag extends React.Component {
   render() {

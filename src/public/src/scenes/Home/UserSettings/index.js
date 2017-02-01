@@ -1,7 +1,8 @@
 import React from "react";
 import config from "../../../../../config";
 import crypto from "crypto"
-import { hashHistory } from "react-router"
+import { hashHistory } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class UserSettings extends React.Component {
   constructor() {

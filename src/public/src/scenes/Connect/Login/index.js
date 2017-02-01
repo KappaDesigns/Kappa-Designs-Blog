@@ -4,6 +4,7 @@ import Tabs from "../Tabs"
 import Platform from "../Platform";
 import Logo from "../Logo";
 import { Link } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Login extends React.Component {
   render() {

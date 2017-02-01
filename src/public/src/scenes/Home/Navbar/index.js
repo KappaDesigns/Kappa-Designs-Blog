@@ -1,6 +1,7 @@
 import React from "react";
 import Navtag from "./Navtag";
 import { Link } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Navbar extends React.Component {
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Ink from "react-ink";
+import 'whatwg-fetch'; 
 
 export default class Platform extends React.Component {
   render() {

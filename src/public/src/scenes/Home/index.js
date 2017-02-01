@@ -5,6 +5,7 @@ import ConnectBtn from "./ConnectBtn"
 import ArticleContainer from "./ArticleContainer";
 import UserSettings from "./UserSettings";
 import { Link } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Home extends React.Component {
   constructor() {

@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./Form";
 import Head from "./Head";
+import 'whatwg-fetch'; 
 
 export default class Edit extends React.Component {
   constructor() {

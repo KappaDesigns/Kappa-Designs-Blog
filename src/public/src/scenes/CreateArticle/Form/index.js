@@ -2,6 +2,7 @@ import React from "react";
 import Sections from "./Sections";
 import Dropdown from "./DropDown";
 import { hashHistory } from "react-router";
+import 'whatwg-fetch'; 
 
 export default class Form extends React.Component {
   constructor() {
