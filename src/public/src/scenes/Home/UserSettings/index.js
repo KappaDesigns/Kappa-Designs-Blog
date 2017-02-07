@@ -2,7 +2,7 @@ import React from "react";
 import config from "../../../../../config";
 import crypto from "crypto"
 import { hashHistory } from "react-router";
-import 'whatwg-fetch'; 
+import 'whatwg-fetch';
 
 export default class UserSettings extends React.Component {
   constructor() {
@@ -121,7 +121,7 @@ export default class UserSettings extends React.Component {
                 } else {
                   this.state.password = this.state.pass
                 }
-                if (this.state.user.username != this.state.original) {
+                if (this.state.user.username != this.state.original && /^[a-zA-Z0-9_]*$/.test(this.state.username)) {
                   fetch(`/api/user/${this.state.user.username}?token=${sessionStorage.token}`, {method:'get'})
                   .then((res) => {
                     return res.json();

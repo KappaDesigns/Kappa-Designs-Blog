@@ -3,7 +3,7 @@ import Ink from "react-ink";
 import { Link, hashHistory } from "react-router";
 import crypto from "crypto";
 import config from "../../../../../../config.js";
-import 'whatwg-fetch'; 
+import 'whatwg-fetch';
 
 export default class Form extends React.Component {
   constructor() {
@@ -48,7 +48,7 @@ export default class Form extends React.Component {
 
   handleRegistration(e) {
     e.preventDefault();
-    if (this.state.username !== '' && /^[a-z0-9]+$/.test(this.state.username)) {
+    if (this.state.username !== '' && /^[a-zA-Z0-9_]*$/.test(this.state.username)) {
       if (this.state.email !== '' && this.state.email.includes('@') && this.state.email.includes('.')) {
         if (this.state.firstName !== '') {
           if (this.state.lastName !== '') {
