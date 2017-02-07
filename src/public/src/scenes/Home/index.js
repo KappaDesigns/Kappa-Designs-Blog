@@ -5,7 +5,7 @@ import ConnectBtn from "./ConnectBtn"
 import ArticleContainer from "./ArticleContainer";
 import UserSettings from "./UserSettings";
 import { Link } from "react-router";
-import 'whatwg-fetch'; 
+import 'whatwg-fetch';
 
 export default class Home extends React.Component {
   constructor() {
@@ -45,7 +45,7 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const tags = ['all','new','gaming','world','food','dev'];
+    const tags = ['all','dev'];
     if (this.state.isFetched) {
       return (
         <div className="home">
